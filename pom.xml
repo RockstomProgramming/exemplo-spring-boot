@@ -6,7 +6,6 @@
 	<groupId>br.com.demo</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
 
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
@@ -53,13 +52,24 @@
 		</dependency>
 		
 		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+		
+		<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-devtools</artifactId>
+	        <optional>true</optional>
+	    </dependency>
+		
+		<dependency>
 		    <groupId>com.h2database</groupId>
 		    <artifactId>h2</artifactId>
 		    <version>1.4.196</version>
 		</dependency>
 		
 	</dependencies>
-
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -68,6 +78,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
