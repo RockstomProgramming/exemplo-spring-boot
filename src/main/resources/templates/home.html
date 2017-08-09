@@ -4,10 +4,13 @@
     <head>
         <title>Hello World!</title>
     </head>
-    <body>
-        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+    <body ng-app="demo" ng-controller="DemoCtrl">
+        <h1 th:inline="text">{{title}} [[${#httpServletRequest.remoteUser}]]!</h1>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out"/>
         </form>
+        
+        <script type="text/javascript" src="./dist/js/scripts-dep.js"></script>
+        <script type="text/javascript" src="./dist/js/scripts.js"></script>
     </body>
 </html>
