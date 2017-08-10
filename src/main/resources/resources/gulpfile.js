@@ -2,11 +2,6 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var serve = require('gulp-webserver');
 
-var scriptsDep = [
-  'bower_components/angular/angular.min.js',
-  'bower_components/angular-route/angular-route.min.js'
-];
-
 var dest = '../public';
 
 gulp.task('scripts', function() {
@@ -16,7 +11,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('scripts-dev', function() {
-  return gulp.src(scriptsDep)
+  return gulp.src('dependencies.json')
     .pipe(concat('scripts-dev.js'))
     .pipe(gulp.dest(dest + '/js'));
 });
@@ -24,7 +19,6 @@ gulp.task('scripts-dev', function() {
 gulp.task('default', function() {
     gulp.start('build');
     gulp.watch('./sources/**', ['build']);
-    //gulp.start('serve');
 });
 
 gulp.task('build', ['scripts', 'scripts-dev', 'copyViews']);

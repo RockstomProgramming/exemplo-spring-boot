@@ -1,13 +1,13 @@
-appController.controller('LoginCtrl', function($scope, $http, $location) {
+appController.controller('LoginCtrl', function($scope, LoginService) {
 	$scope.login = function() {
-		var headers = {authorization : "Basic "
-			 + btoa($scope.username + ":" + $scope.password)
-	 	};
-		$http.post('login', {headers: headers})
-			.then(function(response) {
-				$location.path('/home')
-			}, function(e) {
-				console.log(e);
-			});
+		LoginService.login({
+			username : $scope.username,
+			password : $scope.password
+		});
 	}
+
+	$scope.logout = function() {
+		LoginService.logout();
+	}
+
 });
