@@ -1,4 +1,4 @@
-appController.controller('LoginCtrl', function($scope, LoginService) {
+appController.controller('LoginCtrl', ['$scope', 'LoginService', function($scope, LoginService) {
 	$scope.login = function() {
 		LoginService.login({
 			username : $scope.username,
@@ -10,4 +10,4 @@ appController.controller('LoginCtrl', function($scope, LoginService) {
 		LoginService.logout();
 	}
 
-});
+}]);

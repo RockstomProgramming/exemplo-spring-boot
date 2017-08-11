@@ -1,5 +1,5 @@
 angular.module('demo', ['demo.controllers', 'demo.services', 'ngRoute'])
-  .config(function($routeProvider, $httpProvider) {
+  .config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
     $routeProvider
       .when('/login', {
         templateUrl: '/templates/login.html',
@@ -19,7 +19,7 @@ angular.module('demo', ['demo.controllers', 'demo.services', 'ngRoute'])
       $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
       $httpProvider.interceptors.push('HttpInterceptor');
-  });
+  }]);
 
 var appService = angular.module('demo.services', ['ngCookies']);
 

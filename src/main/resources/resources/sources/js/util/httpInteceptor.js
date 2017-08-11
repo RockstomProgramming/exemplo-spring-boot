@@ -1,4 +1,4 @@
-appService.factory('HttpInterceptor', function($q, $location) {
+appService.factory('HttpInterceptor', ['$q', '$location', function($q, $location) {
 	return {
 		responseError : function(error) {
 			if (error.status == 401) {
@@ -6,4 +6,4 @@ appService.factory('HttpInterceptor', function($q, $location) {
 			}
 		}
 	}
-});
+}]);

@@ -16,7 +16,10 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
-    "gulp-serve": "^1.4.0",
-    "gulp-webserver": "^0.9.1"
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "pump": "^1.0.2",
+    "run-sequence": "^2.1.0"
   }
 }

@@ -1,4 +1,4 @@
-appService.service('LoginService', function($cookies, $location, $http) {
+appService.service('LoginService', ['$cookies', '$location', '$http', function($cookies, $location, $http) {
 	return {
 		login: function(user) {
 			var headers = {
@@ -29,4 +29,4 @@ appService.service('LoginService', function($cookies, $location, $http) {
 			});
 		}
 	}
-});
+}]);
