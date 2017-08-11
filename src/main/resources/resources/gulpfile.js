@@ -1,19 +1,23 @@
-var gulp = require('gulp');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var pump = require('pump');
-var runSequence = require('run-sequence');
+const gulp = require('gulp');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const rename = require('gulp-rename');
+const sass = require('gulp-sass');
+const pump = require('pump');
+const runSequence = require('run-sequence');
 
-const sourcesDev = require('./dependencies.json');
+const sourcesDev = require('./scripts.json');
+const sources = require('./sources.json');
+
 const PATH_DEST = '../public';
 const SCRIPTS = 'scripts.js';
 const SCRIPTS_MIN = 'scripts.min.js';
 const SCRIPTS_DEV = 'scripts-dev.min.js';
 const SCRIPTS_ALL = 'scripts-all.min.js';
 
+
 gulp.task('scripts', function() {
-	return gulp.src('./sources/js/**')
+	return gulp.src(sources.jsDir)
 		.pipe(concat(SCRIPTS))
 		.pipe(gulp.dest(PATH_DEST + '/js'));
 });
@@ -25,7 +29,7 @@ gulp.task('scripts-dev', function() {
 });
 
 gulp.task('copyViews', function() {
-	gulp.src('./sources/templates/**')
+	gulp.src(sources.templatesDir)
 		.pipe(gulp.dest(PATH_DEST + '/templates'));
 	
 	gulp.src('./sources/*.html')
@@ -40,16 +44,16 @@ gulp.task('scripts-compress', function () {
 });
 
 gulp.task('scripts-concat', function() {
-return gulp.src(['../public/js/scripts-dev.min.js', '../public/js/scripts.min.js'])
+return gulp.src(sources.concatJs)
 	.pipe(concat(SCRIPTS_ALL))
 	.pipe(gulp.dest(PATH_DEST + '/js'));
 });
 
-/*gulp.task('sass', function () {
-	return gulp.src(paths.scssDir)
+gulp.task('sass', function () {
+	return gulp.src(sources.scssDir)
 	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-	.pipe(gulp.dest(paths.cssDir));
-});*/
+	.pipe(gulp.dest(PATH_DEST + '/css'));
+});
 
 gulp.task('default', function() {
 	gulp.start('build');

@@ -1,0 +1,6 @@
+{
+	"scssDir" : "./sources/scss/*.scss",
+	"templatesDir" : "./sources/templates/**",
+	"jsDir" : "./sources/js/**",
+	"concatJs" : ["../public/js/scripts-dev.min.js", "../public/js/scripts.min.js"]
+}
