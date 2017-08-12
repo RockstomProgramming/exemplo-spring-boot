@@ -5,6 +5,7 @@ const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const pump = require('pump');
 const runSequence = require('run-sequence');
+const util = require('gulp-util');
 
 const sourcesDev = require('./scripts.json');
 const sources = require('./sources.json');
@@ -31,7 +32,7 @@ gulp.task('scripts-dev', function() {
 gulp.task('copyViews', function() {
 	gulp.src(sources.templatesDir)
 		.pipe(gulp.dest(PATH_DEST + '/templates'));
-	
+
 	gulp.src('./sources/*.html')
 		.pipe(gulp.dest(PATH_DEST));
 });
@@ -56,13 +57,12 @@ gulp.task('sass', function () {
 });
 
 gulp.task('default', function() {
-	gulp.start('build');
-	gulp.watch('./sources/**', ['build']);
+	//gulp.start('build');
+	gulp.watch('./sources/**', ['build-compress']);
 });
 
-gulp.task('build', ['scripts', 'scripts-dev', 'copyViews']);
+gulp.task('build', ['scripts', 'scripts-dev', 'copyViews', 'sass']);
 
 gulp.task('build-compress', function() {
 	runSequence('build', 'scripts-compress');
 });
-
